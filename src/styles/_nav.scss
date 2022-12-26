@@ -1,0 +1,122 @@
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  z-index: 4;
+}
+// push the navlinks to the center
+.push {
+  margin-top: 10rem;
+}
+
+.logo {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  img {
+    width: 200px;
+  }
+}
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3s ease all;
+  p {
+    transition: 0.3s ease all;
+  }
+  img {
+    transition: 0.3s ease all;
+    // change the icons color
+    filter: brightness(0) saturate(100%) invert(2%) sepia(4%) saturate(292%)
+      hue-rotate(337deg) brightness(92%) contrast(71%);
+    padding: 0 0.8rem;
+  }
+  &:hover {
+    background-color: #313131;
+    p {
+      color: white;
+    }
+    img {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(7%)
+        saturate(2168%) hue-rotate(287deg) brightness(122%) contrast(100%);
+    }
+  }
+}
+.nav-link-res a {
+  text-decoration: none;
+}
+.menu-pic {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 30px;
+}
+@media screen and (max-width: 700px) {
+  .logo {
+    img {
+      width: 170px;
+    }
+  }
+  .menu-pic {
+    opacity: 1;
+    top: 30px;
+    right: 40px;
+    pointer-events: auto;
+    z-index: 10;
+  }
+  .push {
+    margin-top: 0rem;
+  }
+  .sidebar {
+    display: flex;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .nav-link-res {
+    z-index : 2 ; 
+    transform: translateX(-120%);
+    transition: 0.3s ease all;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    a {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgb(226, 226, 226);
+      border-top: 1px solid rgb(197, 197, 197);
+      &:last-child {
+        border-bottom: 1px solid rgb(197, 197, 197);
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .menu-pic {
+    opacity: 1;
+    top: 30px;
+    right: 10px;
+  }
+}
+.fade{
+  transform: translateX(0%);
+}

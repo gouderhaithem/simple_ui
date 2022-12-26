@@ -1,10 +1,11 @@
 import React from "react";
 import ContactIcon from "../components/ContactIcon";
 import { useState, useEffect } from "react";
-import { initial_contacts } from "../mycontacts";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
 function Contacts() {
-  const [contacts, setContacts] = useState(initial_contacts);
-  const [new_contacts, setNew_contacts] = useState([]);
+  const { new_contacts, setNew_contacts, contacts, setContacts } =
+    useContext(AppContext);
   const [searchInput, setSearchInput] = useState("");
   const [contactInfo, setContactInfo] = useState({
     name: "",

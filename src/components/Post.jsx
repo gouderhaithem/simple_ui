@@ -1,8 +1,9 @@
 import React from "react";
+import { useState } from "react";
 
 const Post = ({ image, username, date, content, likes }) => {
-  let newDate = new Date();
-  console.log(newDate.getTime());
+  const [liked, setLiked] = useState(false);
+  const [newLikes, setNewLikes] = useState(likes);
   return (
     <>
       <div className="card_d" style={{ position: "relative" }}>
@@ -30,9 +31,21 @@ const Post = ({ image, username, date, content, likes }) => {
           {content}
         </p>
         <div className="expand">
-          <span className="align-center-row gap cursor">
+          <span
+            onClick={() => {
+              setLiked((old) => !old);
+              if (liked) {
+                setNewLikes((old) => old - 1);
+              } else {
+                setNewLikes((old) => old + 1);
+              }
+              console.log(newLikes);
+            }}
+            className="align-center-row gap cursor"
+            style={{ cursor: "pointer" }}
+          >
             <img width={25} src={image} />
-            <p>{likes} likes</p>
+            <p>{newLikes} likes</p>
           </span>
           <div className="align-center-row gap">
             <img width={25} src={image} /> <p>Share</p>

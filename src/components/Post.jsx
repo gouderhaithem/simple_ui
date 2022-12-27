@@ -1,9 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { v4 as uuidv4 } from "uuid";
+import {
+  faCoffee,
+  faShareNodes,
+  faThumbsUp,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
+import Comments from "./Comments";
 
 const Post = ({ image, username, date, content, likes }) => {
+  //state
   const [liked, setLiked] = useState(false);
   const [newLikes, setNewLikes] = useState(likes);
+  const [comments, setcomments] = useState([]); 
+  const [commentContent , setCommentContent] = useState("");
+  function add_comment(e){
+    e.preventDefault()
+    setcomments(oldComments => [...oldComments , {commentContent : commentContent , id : Math.random()}])
+    setCommentContent("");
+  }
   return (
     <>
       <div className="card_d" style={{ position: "relative" }}>
@@ -44,13 +61,25 @@ const Post = ({ image, username, date, content, likes }) => {
             className="align-center-row gap cursor"
             style={{ cursor: "pointer" }}
           >
-            <img width={25} src={image} />
+            <FontAwesomeIcon icon={faThumbsUp} />
             <p>{newLikes} likes</p>
           </span>
           <div className="align-center-row gap">
-            <img width={25} src={image} /> <p>Share</p>
+            <FontAwesomeIcon icon={faShareNodes} /> <p>Share</p>
           </div>
         </div>
+        <div className="allcomments-container"></div>
+        <form onSubmit={add_comment} className="comment-container">
+          <img width={40} src={image} />
+          <input
+            type="text"
+            value={commentContent}
+            onChange={e=> setCommentContent(e.target.value)}
+            className="comment"
+          />
+          <button type="submit" >Add</button>
+        </form>
+        {comments.map(comment => <Comments comments={comments} content={comment.commentContent} id={comment.id} setcomments={setcomments}/>)}
       </div>
     </>
   );

@@ -15,13 +15,13 @@ const ContextNext = ({ children }) => {
       likes: 3,
       image: `https://api.multiavatar.com/GouderJakson.svg`,
     },
-    {
+   /* {
       username: "ai person",
       date: 1670017105338,
       content: "fuck off niggers",
       likes: 1,
       image: `https://api.multiavatar.com/person.svg`,
-    },
+    },*/
   ]);
   return (
     <AppContext.Provider
